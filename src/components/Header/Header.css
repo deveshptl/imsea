@@ -1,0 +1,9 @@
+.header-container {
+    background-color: gainsboro;
+    padding: 15px 20px;
+}
+
+.header-container .logo {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
