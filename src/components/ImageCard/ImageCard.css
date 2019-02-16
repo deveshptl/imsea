@@ -1,0 +1,5 @@
+.image-grid-container img {
+    width: 100%;
+    min-height: auto;
+    max-height: auto;
+}
