@@ -1,7 +1,7 @@
 import keys from '../keys';
 
 export default (query, page) => {
-    return fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=10&page=${page}`, {
+    return fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=13&page=${page}`, {
         method: 'get',
         headers: {
             'Authorization': `${keys.PEXELS_API}`
@@ -19,7 +19,7 @@ export default (query, page) => {
             imageFrom: 'pexels'
         }));
     }).catch(err => {
-        alert('Something went wrong while executing search request to unsplash api.');
+        console.log('PEXELS:', err);
         return err;
     });
 }

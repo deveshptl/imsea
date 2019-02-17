@@ -9,13 +9,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      images: []
+      images: [[], [], [], []],
+      query: undefined
     }
     this.updateImages = this.updateImages.bind(this);
   }
 
-  updateImages(images) {
-    this.setState(() => ({ images }));
+  updateImages(images, query) {
+    this.setState(() => ({ images, query }));
   }
 
   render() {
@@ -23,7 +24,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <SearchForm updateImages={this.updateImages} />
-        <DisplayImages images={this.state.images} />
+        <DisplayImages updateImages={this.updateImages} query={this.state.query} images={this.state.images} />
       </div>
     );
   }
