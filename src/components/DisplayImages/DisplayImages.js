@@ -1,6 +1,8 @@
 import React from 'react';
 import './DisplayImages.css';
 
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 import ImageCard from '../ImageCard/ImageCard';
 
 import getAll from '../../controllers/getAll';
@@ -33,44 +35,41 @@ class DisplayImages extends React.Component {
     });
   }
 
-  handleScroll = () => {
-    const wrap = document.getElementsByClassName('image-grid-container')[0];
-    const contentHeight = wrap.offsetHeight;
-    const yOffset = window.pageYOffset;
-    const y = yOffset + window.innerHeight;
-    if (y + 1100 >= contentHeight && !this.state.called) {
-      this.setState(() => ({ called: true })); // change state back to false when contents are loaded successfully
-      this.loadNextPage();
-    }
-  }
-
-  componentWillMount() {
-    window.onscroll = this.handleScroll;
-  }
-
   render() {
+    const images01 = this.props.images[0];
+    const images02 = this.props.images[1];
+    const images03 = this.props.images[2];
+    const images04 = this.props.images[3];
     return (
-      <div className='image-grid-container'>
-        <div className='column'>
-          {this.props.images[0].map((image) => (
-            <ImageCard {...image} key={image.id} />
-          ))}
-        </div>
-        <div className='column'>
-          {this.props.images[1].map((image) => (
-            <ImageCard {...image} key={image.id} />
-          ))}
-        </div>
-        <div className='column'>
-          {this.props.images[2].map((image) => (
-            <ImageCard {...image} key={image.id} />
-          ))}
-        </div>
-        <div className='column'>
-          {this.props.images[3].map((image) => (
-            <ImageCard {...image} key={image.id} />
-          ))}
-        </div>
+      <div className='display-images-container'>
+        <InfiniteScroll
+          dataLength={this.props.images[0].length}
+          next={this.loadNextPage}
+          hasMore={true}
+          loader={<div className='loader'>Loading...</div>}
+          className='image-grid-container'
+        >
+          <div className='column'>
+            {images01.map((image) => (
+              <ImageCard {...image} key={image.id} />
+            ))}
+          </div>
+          <div className='column'>
+            {images02.map((image) => (
+              <ImageCard {...image} key={image.id} />
+            ))}
+          </div>
+          <div className='column'>
+            {images03.map((image) => (
+              <ImageCard {...image} key={image.id} />
+            ))}
+          </div>
+          <div className='column'>
+            {images04.map((image) => (
+              <ImageCard {...image} key={image.id} />
+            ))}
+          </div>
+        </InfiniteScroll>
       </div>
     )
   }
