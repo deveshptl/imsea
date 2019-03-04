@@ -1,5 +1,6 @@
 import React from 'react';
 import './DisplayImages.css';
+import uuid from 'uuid';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -20,7 +21,6 @@ class DisplayImages extends React.Component {
   loadNextPage = () => {
     getAll(this.props.query, this.state.page + 1).then((res) => {
       let arr = chunkify(res, 4, true);
-      console.log(arr);
       let images01 = this.props.images[0]
       let images02 = this.props.images[1]
       let images03 = this.props.images[2]
@@ -29,7 +29,6 @@ class DisplayImages extends React.Component {
       images02 = images02.concat(arr[1]);
       images03 = images03.concat(arr[2]);
       images04 = images04.concat(arr[3]);
-      console.log([images01, images02, images03, images04]);
       this.setState(() => ({ page: this.state.page + 1, called: false }));
       this.props.updateImages([images01, images02, images03, images04], this.props.query);
     });
@@ -51,22 +50,34 @@ class DisplayImages extends React.Component {
         >
           <div className='column'>
             {images01.map((image) => (
-              <ImageCard {...image} key={image.id} />
+              image &&
+              (
+                <ImageCard {...image} key={uuid()} />
+              )
             ))}
           </div>
           <div className='column'>
             {images02.map((image) => (
-              <ImageCard {...image} key={image.id} />
+              image &&
+              (
+                <ImageCard {...image} key={uuid()} />
+              )
             ))}
           </div>
           <div className='column'>
             {images03.map((image) => (
-              <ImageCard {...image} key={image.id} />
+              image &&
+              (
+                <ImageCard {...image} key={uuid()} />
+              )
             ))}
           </div>
           <div className='column'>
             {images04.map((image) => (
-              <ImageCard {...image} key={image.id} />
+              image &&
+              (
+                <ImageCard {...image} key={uuid()} />
+              )
             ))}
           </div>
         </InfiniteScroll>
