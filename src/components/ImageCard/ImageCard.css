@@ -1,27 +1,27 @@
 .image-grid-container img {
-    width: 100%;
+	width: 100%;
 }
 
 .image-grid-container .image {
-    position: relative;
+	position: relative;
 }
 
 .image-grid-container .image button {
-    position: absolute;
-    bottom: 7%;
-    right: 4%;
-    background-color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 5px 5px;
-    box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.3);
+	position: absolute;
+	bottom: 7%;
+	right: 4%;
+	background-color: white;
+	border: none;
+	border-radius: 25px;
+	padding: 5px 5px;
+	box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.3);
 }
 
 .image button:hover {
-    cursor: pointer;
-    box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.3);
 }
 
 .image button:focus {
-    outline: 0;
+	outline: 0;
 }
