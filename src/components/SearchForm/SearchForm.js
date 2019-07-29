@@ -10,16 +10,14 @@ class SearchForm extends React.Component {
 		this.state = {
 			query: undefined,
 		};
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleQueryChange = this.handleQueryChange.bind(this);
 	}
 
-	handleQueryChange(e) {
+	handleQueryChange = (e) => {
 		const query = e.target.value;
 		this.setState(() => ({ query }));
-	}
+	};
 
-	handleSubmit(e) {
+	handleSubmit = (e) => {
 		e.preventDefault();
 		getAll(this.state.query, 1)
 			.then((res) => {
@@ -29,7 +27,7 @@ class SearchForm extends React.Component {
 			.catch((err) => {
 				console.log(err);
 			});
-	}
+	};
 
 	render() {
 		return (

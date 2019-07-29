@@ -12,12 +12,11 @@ class App extends Component {
 			images: [[], [], [], []],
 			query: undefined,
 		};
-		this.updateImages = this.updateImages.bind(this);
 	}
 
-	updateImages(images, query) {
-		this.setState(() => ({ images, query }));
-	}
+	updateImages = (images, query) => {
+		this.setState({ images, query });
+	};
 
 	render() {
 		return (

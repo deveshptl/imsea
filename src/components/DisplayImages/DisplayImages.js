@@ -14,7 +14,6 @@ class DisplayImages extends React.Component {
 		super(props);
 		this.state = {
 			page: 1,
-			called: false,
 		};
 	}
 
@@ -29,7 +28,7 @@ class DisplayImages extends React.Component {
 			images02 = images02.concat(arr[1]);
 			images03 = images03.concat(arr[2]);
 			images04 = images04.concat(arr[3]);
-			this.setState(() => ({ page: this.state.page + 1, called: false }));
+			this.setState((prevState) => ({ page: prevState + 1 }));
 			this.props.updateImages(
 				[images01, images02, images03, images04],
 				this.props.query
@@ -47,7 +46,7 @@ class DisplayImages extends React.Component {
 				<InfiniteScroll
 					dataLength={this.props.images[0].length}
 					next={this.loadNextPage}
-					hasMore={true}
+					hasMore
 					loader={<div className='loader'>Loading...</div>}
 					className='image-grid-container'
 				>
