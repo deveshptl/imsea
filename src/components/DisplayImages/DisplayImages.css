@@ -42,3 +42,15 @@
 		max-width: 100%;
 	}
 }
+
+.images-navigation {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.images-navigation button {
+	margin: 10px 5px;
+	padding: 5px 15px;
+	font-size: 15px;
+}

@@ -1,30 +1,18 @@
-export default (a, n, balanced) => {
-	if (n < 2) return [a];
+export default (array, numberOfDivisions) => {
+  const dividedArray = [];
 
-	var len = a.length,
-		out = [],
-		i = 0,
-		size;
+  for (let i = 0; i < numberOfDivisions; i++) {
+    dividedArray.push([]);
+  }
 
-	if (len % n === 0) {
-		size = Math.floor(len / n);
-		while (i < len) {
-			out.push(a.slice(i, (i += size)));
-		}
-	} else if (balanced) {
-		while (i < len) {
-			size = Math.ceil((len - i) / n--);
-			out.push(a.slice(i, (i += size)));
-		}
-	} else {
-		n--;
-		size = Math.floor(len / n);
-		if (len % size === 0) size--;
-		while (i < size * n) {
-			out.push(a.slice(i, (i += size)));
-		}
-		out.push(a.slice(size * n));
-	}
+  let addTo = 0;
 
-	return out;
+  array.forEach((value) => {
+    dividedArray[addTo].push(value);
+    addTo++;
+    if (addTo >= numberOfDivisions) {
+      addTo = 0;
+    }
+  });
+  return dividedArray;
 };
